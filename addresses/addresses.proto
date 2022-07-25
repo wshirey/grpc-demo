@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option go_package = "github.com/wshirey/grpc-demo/addresses";
+
+package addresses;
+
+service Addresses {
+  rpc CreateAddress(CreateAddressRequest) returns (Address) {}
+  rpc GetAddress(GetAddressRequest) returns (Address) {}
+  rpc DeleteAddress(DeleteAddressRequest) returns (Address) {}
+}
+
+message Address {
+  string id = 1;
+  string street = 2;
+  string city = 3;
+  uint32 zip = 4;
+}
+
+message CreateAddressRequest {
+  string street = 1;
+  string city = 2;
+  uint32 zip = 3;
+}
+
+message GetAddressRequest {
+  string id = 1;
+}
+
+message DeleteAddressRequest {
+  string id = 1;
+}
